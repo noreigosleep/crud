@@ -81,9 +81,10 @@ p {
 }
 #header h1 {
 	line-height:20px;
-	background: #003d4c url('../img/cake.icon.png') no-repeat left;
+	background: #003d4c;
 	color: #fff;
 	padding: 0 30px;
+    font-size: 25px;
 }
 #header h1 a {
 	color: #fff;
@@ -740,4 +741,21 @@ pre {
 /** Elements **/
 #url-rewriting-warning {
 	display:none;
+}
+.pull-left {
+    float: left;
+}
+.pull-right {
+	float: right;
+}
+.menu-holder {
+	list-style: none;
+}
+.menu-holder li {
+	display: inline-block;
+    background: midnightblue;
+    padding: 5px 7px;
+}
+.menu-holder li a{
+    text-decoration: none;
 }
