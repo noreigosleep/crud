@@ -7,8 +7,7 @@
  */
 class CategoriesController extends  AppController {
     public function index() {
-        $user = $this->getCurrentUser();
-        $this->set('categories', $this->Category->find('all', array('conditions' => array('Category.user_id' => $user['id']))));
+        $this->set('categories', $this->Category->find('all', array('conditions' => array('Category.user_id' => $this->Auth->user('id')))));
     }
     public function add() {
         if($this->request->is('post')){
@@ -67,9 +66,6 @@ class CategoriesController extends  AppController {
         $this->set('category', $category);
     }
 
-    private function getCurrentUser(){
-        return $this->Auth->user();
-    }
 
     public function isAuthorized($user) {
         if( in_array($this->action, array('index', 'add', 'list_products'))) return true;
