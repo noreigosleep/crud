@@ -7,7 +7,8 @@
                 'message' => "Minimum 8 characters long"
             ),
             'price' => array(
-                'require' => true
+                'require' => true,
+                'rule' => 'notBlank'
             ),
             'category_id' => array(
                 'require' => true,
