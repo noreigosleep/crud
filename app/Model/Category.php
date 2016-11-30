@@ -4,7 +4,8 @@
         public $validate = array(
             'name' => array(
                 'require' => true,
-                'rule' => 'notEmpty'
+                'rule' => array('minLength', 8),
+                'message' => 'Minimum 8 characters long'
             )
         );
 
