@@ -6,10 +6,10 @@
     foreach($categories as $category) {
         ?>
         <tr>
-            <td><?php echo $this->Html->link($category['Category']['name'], array('action' => 'view', $category['Category']['id']))?></td>
+            <td><?php echo $category['Category']['name'] ?></td>
             <td><?php echo $this->Html->link('List Products', array('action' => 'list_products', $category['Category']['id'])); ?></td>
             <td><?php echo $this->Html->link('Edit', array('action' => 'edit', $category['Category']['id'])) ?></td>
-            <td><?php echo $this->Form->postLink('Delete', array('action' => 'delete', $category['Category']['id']), array('confirm' => 'Are you sure?')); ?></td>
+            <td><?php echo $this->Form->postLink('Delete', array('action' => 'delete', $category['Category']['id']), array('confirm' => 'Delete category will delete all products within the category. Are you sure?')); ?></td>
         </tr>
         <?php
     }

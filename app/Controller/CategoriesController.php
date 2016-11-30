@@ -49,7 +49,7 @@ class CategoriesController extends  AppController {
     public function delete($id = null) {
         if($this->request->is('get'))
             throw new MethodNotAllowedException();
-        if($this->Category->delete($id)){
+        if($this->Category->delete($id, true)){
             $this->Flash->success(__('The Category id : %s has been delete', h($id)));
         } else {
             $this->Flash->error(__('Coudn\'t delete the Category %s', h($id)));

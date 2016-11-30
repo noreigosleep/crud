@@ -1,11 +1,14 @@
 <?php
     class Category extends AppModel{
-        public $hasMany = 'Product';
+        public $hasMany = array(
+            'Product' => array('dependent'=> true)
+        );
+
         public $validate = array(
             'name' => array(
                 'require' => true,
-                'rule' => array('minLength', 8),
-                'message' => 'Minimum 8 characters long'
+                'rule' => array('minLength', 3),
+                'message' => 'Minimum 3 characters long'
             )
         );
 
