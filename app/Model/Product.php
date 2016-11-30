@@ -3,7 +3,8 @@
         public $validate = array(
             'name' => array(
                 'require' => true,
-                'rule' => 'notBlank'
+                'rule' => array('minLength' => 3),
+                'message' => "Minimum 3 characters long"
             ),
             'category_id' => array(
                 'require' => true,
