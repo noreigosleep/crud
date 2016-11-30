@@ -6,6 +6,9 @@
                 'rule' => array('minLength', '8'),
                 'message' => "Minimum 8 characters long"
             ),
+            'price' => array(
+                'require' => true
+            ),
             'category_id' => array(
                 'require' => true,
                 'rule' => 'notBlank'
