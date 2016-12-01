@@ -5,13 +5,21 @@
             $this->Auth->allow(array('register', 'logout'));
         }
         public function isAuthorize($user){
-            if($user['role']) {
-
+            if( in_array($this->action, array('index', 'add'))) return true;
+            if (in_array($this->action, array('edit', 'delete'))) {
+                $productId = (int) $this->request->params['pass'][0];
+                if ($this->Product->isOwnedBy($productId, $user['id'])) {
+                    return true;
+                }
             }
+            return parent::isAuthorized($user);
+
         }
         public function register() {
             if($this->request->is('post')) {
-                if($this->User->save($this->request->data)) {
+                $registerData = $this->request->data;
+                $registerData['User']['role'] = "business";
+                if($this->User->save($registerData)) {
                     $this->Flash->success(__('Registered successfully!'));
                     if($this->Auth->login())
                         return $this->redirect($this->Auth->redirectUrl());

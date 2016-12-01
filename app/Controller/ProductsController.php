@@ -45,9 +45,17 @@ class ProductsController extends AppController {
         $product = $this->Product->findById($id);
         if(!$product)
             throw new NotFoundException(__('Invalid Product'));
+        if($this->request->is(array('post', 'put'))) {
+            $this->Product->id = $id;
+            if($this->Product->save($this->request->data)){
+                $this->Flash->success(__('Your product has been saved!'));
+                return $this->redirect(array('action' => 'index'));
+            }
+            $this->Flash->error(__('Unable to update your product.'));
+        }
+        $categories = $this->Product->Category->find('list', array('conditions' => array('user_id' => $this->Auth->user('id'))));
+        $this->set(compact('categories'));
         if(!$this->request->data) {
-            $categories = $this->Product->Category->find('list', array('conditions' => array('user_id' => $this->Auth->user('id'))));
-            $this->set(compact('categories'));
             $this->request->data = $product;
         }
     }

@@ -10,8 +10,8 @@
             ),
             'password' => array(
                 'required' => array(
-                    'rule' => 'notBlank',
-                    'message' => 'A password is required'
+                    'rule'      => array('between', 8, 40),
+                    'message' => 'Your password must be between 8 and 40 characters'
                 )
             ),
             'role' => array(
